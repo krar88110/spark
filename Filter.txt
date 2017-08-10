@@ -1,0 +1,5 @@
+*)   A higher order method that takes a boolean function as input and applies to every element in the source RDD
+     to create a new RDD. Only those elements are selected for which the input boolean function return true.
+	 
+	 val lines = sc.textFile("...")
+	 val longLines = lines.filter { l => l.length > 80 }

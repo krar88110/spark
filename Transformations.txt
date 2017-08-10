@@ -1,0 +1,5 @@
+*)   RDD transformations are conceptually similar to Scala collection method but with a
+     difference i.e. Scala collection needs the data to fit in memory of a single machine
+	 where as RDD can operate on data distributed across cluster of nodes
+*)   Another difference is that scala collection method are strict but RDD transformations
+     are lazy

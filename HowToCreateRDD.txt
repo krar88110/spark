@@ -1,0 +1,13 @@
+*)   We can create a new RDD by either of two ways
+		1) Transforming an existing RDD
+			Just like when you call map on a List you get back a List, similarly many higher order functions defined on RDD
+			return a new RDD
+		2) From SparkContext (in newer Spark version SparkSession) object
+			SparkContext is the handle to the Spark Cluster, this is how you talk to Spark. In other words, this represents
+			a connection between your running application and Spark Cluster. Two main methods for creating creating RDD using
+			SparkContext are
+				*) Parallelize
+						converts a local Scala collection into RDD. Not used in production as assumption is collection is
+						already in memory which might not be possible with Big data
+				*) TextFile
+						reads a text file from HDFS or local file system and return RDD of String

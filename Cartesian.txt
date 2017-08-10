@@ -1,0 +1,7 @@
+*)   Takes input an rdd and returns a new RDD. The new RDD contains all possible combinations of the source RDD
+     and the input RDD.
+	 
+	 val numbers = sc.parallelize(List(1,2,3,4))
+	 val alphabets = sc.parallelize(List("a", "b", "c", "d"))
+	 val cartesianProduct = numbers.cartesian(alphabets)
+	 

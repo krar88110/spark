@@ -1,0 +1,25 @@
+*)   RDD seems a lot like immutable sequential or parallel Scala collection
+
+*)   Like a List, RDD also has a similar api with higher order methods like map, flatMap, filter, reduce etc.
+
+*)   Other method which exists on both parallel/sequential collection as well as RDD are fold, aggregate etc
+
+*)   The transformation method on RDD like map, flatMap, filter etc all returns a new RDD whereas reduction operations like
+     reduce, fold, aggregate have the same signatures. The only difference aggregate has as compared to sequential collection
+	 is that in Spark it sends the first param by value and in Scala it sends by name
+	 
+*)   for example consider you have 
+		val encyclopedia:RDD[String] 
+	 and you want to search for how many contains keyword "Kashif"?
+	 
+	 encyclopedia.filter(lines => lines.contains("Kashif")).count()
+	 
+	 
+	 Word count problem
+	 
+	 val rdd = sc.textFile("...") //RDD[String] representing a line
+	 rdd.flatMap(line => line.split(" ")) //RDD[String] representing words
+	 .map(word => (word,1))
+	 .reduceByKey(_+_)
+
+

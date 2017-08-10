@@ -1,0 +1,5 @@
+*)   It takes another RDD as input and returns a new RDD that contains union of source RDD and RDD passed as a input
+	
+	 val lines1 = sc.textFile("...")
+	 val lines2 = sc.textFile("...")
+	 val linesFromBothSides = lines1.union(lines2)

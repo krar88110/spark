@@ -1,0 +1,4 @@
+*)   Returns a new pair RDD with every element paired with its index
+
+	 val alphabets = sc.parallelize(List("a", "b", "c", "d"))
+	 val alphaWithIndex = alphabets.zipWithIndex

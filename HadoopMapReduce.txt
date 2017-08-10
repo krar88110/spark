@@ -1,0 +1,7 @@
+*)   Hadoop is Batch processing data framework. Its an open source implementation of Google MapReduce.
+
+*)   Two big advantages are its simple api (simple map and reduce steps) and fault tolerant
+
+*)   Being fault tolerant allowed the application to scale to 1000's of nodes
+
+*)   To be fault tolerant, Hadoop shuffles the data and write intermediate data to the disk

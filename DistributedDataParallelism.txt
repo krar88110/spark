@@ -1,0 +1,24 @@
+*)   Similar to shared memory data parallelism abstraction, distributed data parallelism works the same way
+     1) Split the data over several nodes
+	 2) Nodes working independently over the data shard in parallel
+	 3) Combine the results when done
+	 
+*)	 Network latency wasnt an issue in Shared Memory but its an issue in Distributed data parallelism
+
+*)   Spark implements distributed data parallel model called RDD (Resilient distributed datasets)
+
+*)   Spark distributes the data into chunks and then sends it over to different nodes/cluster of machines.
+     Spark gives back you the reference to the distributed dataset in the form of RDD.
+	 
+*)   Couple of main things to keep in mind with distributed data model
+	 1) Subset of machine failing
+	 2) Latency -- an issue that you can not undermine
+	 
+*)   Latency numbers
+	 1)Reading 1 mb from memory :- 250,000ns
+	 2)Reading 1 mb from disk :- 20,000,000ns
+	 Reading from memory is 100X times faster than disk
+	 
+	 1) Main memory reference :- 100ns
+	 2) Sending packet from US -> Europe -> US :- 150,000,000ns
+	 Main memory reference is 1,000,000X faster than network access

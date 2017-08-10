@@ -1,0 +1,14 @@
+*)   It a higher order method, the input function can accept two parameters. Firstly a function which could generate a key
+     for every element and secondly whether you want the sort to be ascending or descending
+	 
+	 val numbers = sc.parallelize(List(3,2,4,1,5))
+	 numbers.sortBy(x => x, true)
+	 
+     case class Person(name:String, Int:age, String:gender, zip:String)
+	 val lines = sc.textFile("...")
+	 val people = lines map { l => {
+			val a = l.split(",")
+			Person(a(0), a(1).toInt, a(2), a(3))
+		}
+	 }
+	people.sortBy( x=> x.age, true)

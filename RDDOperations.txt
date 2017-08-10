@@ -1,0 +1,5 @@
+*)   Spark applications process data using the methods defined in the RDD class or classes derived from it
+*)   Beauty of spark is we can use same RDD method to process data ranging from few bytes to petabytes and also data
+     retrieved from distributed storage system or local file system
+*)   RDD operations can be categorized as either transformation or action. A transformation operation creates a new RDD 
+     where as an action returns a value to the driver program.

@@ -1,0 +1,5 @@
+*)	 There are few action operations which are not present in normal scala collection
+		TakeSample (will give you randomly sampled array of elements)
+		TakeOrdered (will give you first n elements according to their natural order or a custom comparator in array of elements)
+		saveAsTextFile
+		saveAsSequenceFile

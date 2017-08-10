@@ -1,0 +1,6 @@
+*)	 There are few transformation operations that work on 2 rdd's
+		Union
+		Intersection
+		Subtract
+		Cartesian
+		Distinct

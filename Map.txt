@@ -1,0 +1,5 @@
+*)   A higher order method, that takes a function as input and applies it to each element in the source RDD
+     and creates a new RDD
+	 
+	 val lines = sc.textFile("...") //returns RDD[String]
+	 val lengths = sc.map { l => l.length } //returns RDD[Int]

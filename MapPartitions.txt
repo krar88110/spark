@@ -1,0 +1,23 @@
+*)   A higher order method that allows us to process data at parition level
+*)   Instead of passing in one element at a time, the input function will take in the whole partition in the form of
+     of an iterator.
+*)   The main advantage of mapPartitions is that initialization is done on per partition basis
+     instead of per element basis. Consider for example initializing a database connection, in map and
+	 and foreach it will be done for every element
+	 
+	 val lines = sc.textFile("...")
+	 lines.mapPartitions { iter => iter.map { l => l.length } }
+	 
+	 val rdd1 - sc.parallelize(
+					List(
+						"yellow", "red",
+						"blue", "cyan",
+						"black"
+						), 3)
+	val mapped = rdd.mapPartitions { iter => {
+						//Here you can do any form of initialization per partition
+						iter.map {
+							el => el.length
+						}
+					}		
+				}

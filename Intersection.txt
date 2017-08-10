@@ -1,0 +1,5 @@
+*)   Takes input an RDD and returns a new RDD which has the common elements between source RDD and the input RDD
+
+	val mammals = sc.parallelize(List("Lion", "Dolphin", "Whale"))
+	val aquatics = sc.parallelize(List("Shark", "Dolphin", "Whale"))
+	val aquaticsMammals = mammals.intersection(aquatics)

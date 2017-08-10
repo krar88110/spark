@@ -1,0 +1,6 @@
+*)   Takes input an rdd and returns a new RDD which contains element from source RDD which are not present in the
+     input RDD
+	 
+	val mammals = sc.parallelize(List("Lion", "Dolphin", "Whale"))
+	val aquatics = sc.parallelize(List("Shark", "Dolphin", "Whale"))
+	val mammalsAquatics = mammals.subtract(aquatics)

@@ -1,0 +1,33 @@
+*)	 Reduction operation like fold, aggregate, reduce. Walk through entire collection combining the neighbouring element to produce
+	 a single result rather than a new collection
+	
+*)	 Most actions in spark are reduction operation but not all of them like save*, collect, take etc
+
+*)	 case class Taco(kind:String, price:Double)
+	 val tacoOrder = List(
+						Taco("Carnitas",2.25),
+						Taco("Corn", 1.75),
+						Taco("Barbacoa", 2.50),
+						Taco("Chicken", 2.00))
+	 val cost = tacoOrder.foldLeft(0.0)((sum,taco) => sum + taco.price)
+	 
+*) 	foldLeft is not parallelizable consider below example
+	val l = List(1,2,3,4)
+	l.foldLeft("")((str:String, num:Int)=>str + num )
+	
+	partition 1 produces "12"
+	partition 2 produces "34"
+	Now you cant combine the result of both because your function signature doesnt support (string, string) but (string, int)
+	
+*) 	fold is parallelizable as it requires the return type to be of the same type
+
+*) 	aggregate allows you to change the return type and be parallelizable as well. It takes in two function, one representing foldLeft
+	and other representing fold
+	
+*)	Since foldLeft/right are not parallelizable they are not park of Spark collection but fold, reduce and aggregate are.
+	In a distributed environment its very difficult to make sure operations are performed serially thats why foldLeft/Right are
+	completely removed
+	
+*) 	Aggregate is very desirable as generally when you are dealing with big data, you have lots of extra fields. So in your first
+	operation you can map it to lesser fields and in second operation you just reduce with the lesser fields
+	

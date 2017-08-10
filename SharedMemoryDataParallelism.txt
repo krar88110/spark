@@ -1,0 +1,10 @@
+*)   Consider we have a collection called jar on a single node and using Scala parallel collection
+	 when we call the following code on it
+	 
+	 val res = jar.map { jellybean => doSomething(jellybean) }
+	 
+	 On a single node, under the hood following things will happen
+	 
+	 1) Split the data into multiple chunks
+	 2) Workers/threads working parallel on the data shards
+	 3) Combine the results when done

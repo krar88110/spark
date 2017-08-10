@@ -1,0 +1,9 @@
+*)   Takes input an RDD and returns an RDD of pairs where the first element is from source RDD and second element
+     is from the input RDD
+*)   Unlike cartesian, the new RDD will have same number of elements as the source RDD.
+*)   Both source and input RDD must also have same number of elements
+*)   Both source and input RDD must also have same number of partitions and same number of elements in each partition
+
+     val numbers = sc.parallelize(List(1,2,3,4))
+	 val alphabets = sc.parallelize(List("a", "b", "c", "d"))
+	 val zippedCars = numbers.zip(alphabets)

@@ -1,0 +1,8 @@
+*)   Spark is also fault tolerant, but it uses a different strategy for handling the latency
+
+*)   Uses the ideas from functional programming to handle latency
+
+*)   Idea is to keep data immutable and in memory. Just remember all the functional transformation and in case of any
+     and node failure all you need to do is to copy the data somewhere else and rerun the functional transformations on it.
+	 
+*)   As a result Spark is 100X times more faster than Hadoop and has added even more expressive API's

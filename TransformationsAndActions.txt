@@ -1,0 +1,43 @@
+*)   They are different kind of operations on RDD
+
+*)   Remember Transformers and Accessors from normal scala collection. Transformers were methods that return a new Scala
+	 collection, not a single value like map, flatMap, filter, groupBy etc. Accessors returns single value not collections
+	 for eg reduce, fold, aggregate. Similarly in Spark we have Transformations and Actions. Transformations returns new RDD
+	 and Actions compute a result based on an RDD which it either returns or save to external Storage system like HDFS
+	 
+*)	 Transformations are lazy and are not computed immediately, where as actions are eager and return results immediately. This
+	 is how Spark tries to reduce the network communication using programming model
+	 
+	 val list = ... //Very large list
+	 val rdd = sc.parallelize(list) //Rdd[String]
+	 rdd.map(line => line.length) //RDD[Int]
+	 
+	 Nothing would happen on the cluster till this point
+	 
+	 rdd.reduce(_+_) //Since its an action and output will be total chars in the list, computation will begin on cluster at this point
+	 
+*)	 Some common transformation operations are
+		map
+		flatMap
+		filter
+		distinct
+	 remember all are lazy and will return a new RDD
+	 
+*)	 Some common actions are 
+		collect
+		count
+		take
+		reduce
+		foreach
+	 remember they are eager and it doesnt return a RDD
+	 
+*)	 Determine errors in the logs
+		val lastYearsLogs: RDD[String] = ???
+		lastYearsLogs.filter(line => line.contains("Error") && line.contains("*12-2016*"))
+		.count
+		
+*)	 Being lazy, it can also do smart things like consider below code
+		lastYearsLogs.filter(_.contains("ERROR")).take(10)
+	 Spark will only take first 10 elements with "ERROR" and then stop rather than going through whole dataset
+
+	 

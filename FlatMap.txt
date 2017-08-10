@@ -1,0 +1,5 @@
+*)   Higher order function, that takes input a function which returns a sequence for every input element from the source RDD
+*)   The new RDD returned will flatten the collection of sequence
+
+	 val lines = sc.textFile("...")
+	 val words = lines.flatMap(l => l.split(" "))
